@@ -1,14 +1,22 @@
+//Week 12 Final Coding Project
+
+
+//Below are all of the classes that will be used to create the Movies List App CRUD
+
+//The category class is the main class that will structure all of the other forms 
 class Category {
     constructor(name) {
         this.name = name;
         this.movies = [];
     }
 
+//This function will add information to the the movies array that is presented in each form
     addMovie(title, releaseDate) {
         this.movies.push(new Movie(title, releaseDate));
     }
 }
 
+//This class will define the objects being stored in the movies array
 class Movie {
     constructor(title, releaseDate){
         this.title = title;
@@ -16,6 +24,7 @@ class Movie {
     }
 }
 
+//Below is the class that sends information to the browser by working with the api
 class CategoryService {
     static url = "https://6539d7c7e3b530c8d9e8be33.mockapi.io/movies";
 
@@ -49,6 +58,8 @@ class CategoryService {
     }
 }
 
+//The DOMManager class hold functions that will create a category, delete a category, add a movie, delete a movie, and render cards using Bootstrap
+//that will display all of the different forms that were created and the information that each form holds.
 class DOMManager {
     static categories;
 
@@ -146,7 +157,7 @@ static deleteCategory(id) {
     }
 }
 
-
+//Below is the final function that will gather all of the input information and create a new category to display on the web page
 $('#create-new-category').click(() => {
 DOMManager.createCategory($('#new-category-name').val());
 $('#new-category-name').val('');
